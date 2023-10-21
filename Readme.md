@@ -13,7 +13,7 @@ Hehe_ is a Node.js and Express web application that allows users to upload and d
 1. Clone the repository to your local machine:
 
 ```shell
-git clone https://github.com/yourusername/Hehe_.git
+git clone https://github.com/AeyKeyZS/Hehe_.git
 ```
 
 2. Navigate to the project directory:
