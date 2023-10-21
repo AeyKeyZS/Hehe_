@@ -34,7 +34,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 });
 
 app.get('/list-files', (req, res) => {
-  const directoryPath = path.join(__dirname, 'uploads'); // Path to your downloads folder
+  const directoryPath = path.join(__dirname, 'uploads'); // Path to your uploads folder
 
   fs.readdir(directoryPath, (err, files) => {
     if (err) {
