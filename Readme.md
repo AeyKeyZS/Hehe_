@@ -1,6 +1,9 @@
 # Hehe_
 
-Hehe_ is a Node.js and Express web application that allows users to upload and download files from a specified folder. Users can easily share and access files within your local network.
+An app where you can upload/ download files within your local server without internet. You just need a same network.
+Users can easily share and access files within your local network.
+
+![Demo Screenshot](image.png)
 
 ## Getting Started
 

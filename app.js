@@ -47,6 +47,19 @@ app.get('/list-files', (req, res) => {
   });
 });
 
+app.get('/download/:filename', (req, res) => {
+  const filename = req.params.filename;
+  const file = `${__dirname}/uploads/${filename}`;
+
+  res.download(file, (err) => {
+    if (err) {
+      // Handle errors, such as the file not being found
+      res.status(404).send('File not found');
+    }
+  });
+});
+
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
