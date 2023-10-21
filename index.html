@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Hehe
+  </title>
+</head>
+
+<body>
+  <h1>Hehe_</h1>
+  <p>An app where you can upload/ download files on your local server without internet. You just need a same network.</p>
+  <br/>
+  <h3>Upload a File</h3>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <input type="submit" value="Upload" />
+  </form>
+  <br/>
+  <div id="file-list">
+    <h3>Files_</h3>
+  </div>
+
+  <script type="text/javascript">
+    // HTML element where the list of file names will be displayed
+    const fileListElement = document.getElementById('file-list');
+
+    // Function to create download links
+    function createDownloadLink(fileName) {
+      const link = document.createElement('a');
+      link.href = `/download/${fileName}`; // This links to your download route
+      const nameToDisplay = new Date(Number(fileName.split('-')[0])).toLocaleString() + ' - ' + fileName.split('-').slice(1).join('-');
+      link.innerText = nameToDisplay;
+      link.download = fileName;
+      const listItem = document.createElement('li');
+      listItem.appendChild(link);
+      return listItem;
+    }
+
+    fetch('/list-files')
+      .then((response) => response.json())
+      .then((data) => {
+        // Process the list of file names
+        console.log(data)
+        data.forEach((file) => {
+          const downloadLink = createDownloadLink(file.name);
+          fileListElement.appendChild(downloadLink);
+        });
+        if(data.length == 0){
+          fileListElement.innerHTML = "<p>No files currently on server</p>"
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching file list:', error);
+      });
+  </script>
+</body>
+
+</html>
